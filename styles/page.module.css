@@ -1,0 +1,128 @@
+.main {
+	width: 1200px;
+}
+
+.toEmployeesList {
+  color: whitesmoke; /* Une couleur bleu classique pour les liens */
+  text-decoration: none; /* Pour s'assurer que le lien n'est pas souligné par défaut */
+}
+
+.toEmployeesList:hover {
+  text-decoration: underline; /* Souligner au survol */
+}
+
+.inputGroup {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 10px auto;
+}
+.formContainer {
+	width: 500px;
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	padding: 12px;
+	height: 700px;
+	border: 2px solid #0cc7ba;
+	border-radius: 10px;
+}
+.label {
+	margin: 5px auto;
+}
+.input {
+	width: 250px;
+	margin: auto;
+	border-radius: 5px;
+}
+.adress {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 250px;
+	padding: 20px;
+	margin: 20px auto;
+	border: 1px solid #0cc7ba;
+	border-radius: 10px;
+}
+
+.save {
+	display: flex;
+	width: 60px;
+	height: 25px;
+	font-size: 1rem;
+	border-radius: 5px;
+	justify-content: center;
+	color: white;
+	background-color: #0cc7ba;
+	border-color: #0cc7ba;
+	margin: 20px auto;
+}
+
+.confirmation {
+  color:red;
+}
+
+
+/* EMPLOYEE LIST */
+
+
+.employeeTitle {
+  text-align: center;
+}
+
+.employeeContainer {
+width: 1000px;
+margin: auto;
+
+}
+
+.employeeLabel {
+  margin-left: 10px;
+}
+
+.employeeSearch {
+margin-right: 10px;
+}
+.employeeTable {
+  width: 100%;
+margin: auto;
+}
+
+.employeeTableLabel {
+  display: flex;
+  justify-content: space-between;
+  margin:10px 0;
+  }
+  
+  .employeeTableSelect {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .dataTablesEmpty {
+    background-color: #f1f1f1; 
+    text-align: center;        
+    padding: 5px 0;           
+    border-top: 1px solid #ccc;  
+    border-bottom: 1px solid #ccc; 
+    font-size: 14px;  
+    margin: 100px 0;
+    color: black;
+  }
+  .employeeTableTBody {
+    margin-top: 50px;
+  }
+
+  .thStyle {
+    background-color: #0cc7ba; 
+    color: white;  
+    padding: 8px 12px;  
+    border: 1px solid darkgray;  
+    text-align: center;  
+  }
+  /*******************************/
+
+  
+ 
