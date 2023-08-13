@@ -3,12 +3,12 @@
 }
 
 .toEmployeesList {
-  color: whitesmoke; /* Une couleur bleu classique pour les liens */
-  text-decoration: none; /* Pour s'assurer que le lien n'est pas souligné par défaut */
+  color: whitesmoke; 
+  text-decoration: none; 
 }
 
 .toEmployeesList:hover {
-  text-decoration: underline; /* Souligner au survol */
+  text-decoration: underline; 
 }
 
 .inputGroup {
@@ -17,24 +17,28 @@
 	justify-content: center;
 	margin: 10px auto;
 }
+
 .formContainer {
 	width: 500px;
 	display: flex;
 	flex-direction: column;
 	margin: auto;
 	padding: 12px;
-	height: 700px;
+	height: 800px;
 	border: 2px solid #0cc7ba;
 	border-radius: 10px;
 }
+
 .label {
 	margin: 5px auto;
 }
+
 .input {
 	width: 250px;
 	margin: auto;
 	border-radius: 5px;
 }
+
 .adress {
 	display: flex;
 	flex-direction: column;
@@ -64,9 +68,7 @@
   color:red;
 }
 
-
 /* EMPLOYEE LIST */
-
 
 .employeeTitle {
   text-align: center;
@@ -85,6 +87,7 @@ margin: auto;
 .employeeSearch {
 margin-right: 10px;
 }
+
 .employeeTable {
   width: 100%;
 margin: auto;
@@ -111,6 +114,7 @@ margin: auto;
     margin: 100px 0;
     color: black;
   }
+
   .employeeTableTBody {
     margin-top: 50px;
   }
@@ -122,6 +126,7 @@ margin: auto;
     border: 1px solid darkgray;  
     text-align: center;  
   }
+  
   /*******************************/
 
   
