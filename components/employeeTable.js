@@ -1,14 +1,16 @@
 import { useState, useEffect, useMemo } from "react";
 import styles from "../styles/page.module.css";
 import { useTable, usePagination, useSortBy, useFilters, useGlobalFilter } from "react-table";
+import { useSelector } from 'react-redux';
+
 
 export default function EmployeeTable() {
+	const employees = useSelector(state => state.employees);
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
-		const employees = JSON.parse(localStorage.getItem("employees") || "[]");
-		setData(employees);
-	}, []);
+        setData(employees);
+    }, [employees]); 
 
 	const columns = useMemo(
 		() => [

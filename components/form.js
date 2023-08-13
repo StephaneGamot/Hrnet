@@ -6,7 +6,9 @@ import styles from "../styles/page.module.css";
 import DateInput from "../components/dateInput";
 import SelectInput from "../components/selectInput";
 import TextInput from "../components/textInput";
-import Modal from "./modal"
+import Modal from "next-modal-component";
+import { useDispatch } from "react-redux";
+import { addEmployee } from "../features/employeeSlice";
 
 export default function Form() {
 	const [firstName, setFirstName] = useState("");
@@ -23,6 +25,8 @@ export default function Form() {
 	const [isOpen, setIsOpen] = useState(false);
 	const handleClose = () => setIsOpen(false);
 
+	const dispatch = useDispatch();
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
@@ -31,11 +35,10 @@ export default function Form() {
 			return;
 		} else {
 			saveEmployee();
-			setConfirmationOpen(true); // Ouvre la modale
+			setConfirmationOpen(true);
 		}
 	};
 	const saveEmployee = () => {
-		const employees = JSON.parse(localStorage.getItem("employees")) || [];
 		const employee = {
 			firstName,
 			lastName,
@@ -47,18 +50,18 @@ export default function Form() {
 			state,
 			zipCode,
 		};
-		employees.push(employee);
-		localStorage.setItem("employees", JSON.stringify(employees));
-		//setFirstName("");
-		//setLastName("");
-	//	setDateOfBirth("");
-	//	setStartDate("");
-	//	setDepartment("");
-	//	setStreet("");
-	//	setCity("");
-	//	setState("");
-	//	setZipCode("");
-	//	setConfirmationOpen(true);
+		dispatch(addEmployee(employee));
+
+		setFirstName("");
+		setLastName("");
+		setDateOfBirth("");
+		setStartDate("");
+		setDepartment("");
+		setStreet("");
+		setCity("");
+		setState("");
+		setZipCode("");
+		setConfirmationOpen(true);
 	};
 
 	return (
@@ -106,24 +109,26 @@ export default function Form() {
 				</button>
 
 				{isConfirmationOpen && (
-					
 					<Modal
-                isOpen={isConfirmationOpen}
-                    onClose={() => setConfirmationOpen(false)}
-                title="Employee Created!"
-                textColor="red"
-                backgroundColor="black"
-                borderColor="green"
-                titleFontSize="30px"
-                contentFontSize="18px"
-                customStyles={{
-                    header: { padding: "20px" },
-                   content: { fontWeight: "bold" },
-                    overlay: { backgroundColor: "rgba(0, 0, 0, 0.5)" },
-                    modal: { boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)" }
-                }}
-           />
-/* TEXTE A AJOUTER */ 
+						isOpen={isConfirmationOpen}
+						onClose={() => setConfirmationOpen(false)}
+						title="Employee Created!"
+						textColor="red"
+						modalWidth="50%"
+						backgroundColor="black"
+						borderColor="#0cc7ba"
+						titleFontSize="30px"
+						contentFontSize="18px"
+						content=""
+						contentAlign="center"
+						closeBtnStyle={{ color: "white", fontSize: "20px" }}
+						customStyles={{
+							header: { padding: "20px" },
+							content: { fontWeight: "bold" },
+							overlay: { backgroundColor: "rgba(0, 0, 0, 0.5)" },
+							modal: { boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)" },
+						}}
+					/>
 				)}
 			</form>
 		</div>

@@ -1,4 +1,4 @@
-import { states } from '../data/states';  // Assurez-vous que le chemin est correct
+import { states } from '../data/states';  
 
 function StateOptions() {
     return (
