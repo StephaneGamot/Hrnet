@@ -127,7 +127,17 @@ margin: auto;
     text-align: center;  
   }
   
-  /*******************************/
+  .paginationContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.paginationNumbers {
+  display: flex;
+  gap: 0.5rem; 
+}
+
 
   
  

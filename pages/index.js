@@ -10,15 +10,12 @@ export default function Home() {
 			<Head>
 				<title>HRnet</title>
 			</Head>
-
 			<div>
 				<h1>HRnet</h1>
 				<Link href="/employees" className={styles.toEmployeesList}>
 					View Current Employees
 				</Link>
-
 				<h2>Create Employee</h2>
-
 				<Form />
 			</div>
 		</>

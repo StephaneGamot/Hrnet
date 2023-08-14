@@ -52,7 +52,7 @@ export default function Form() {
 		};
 		dispatch(addEmployee(employee));
 
-		setFirstName("");
+		/*setFirstName("");
 		setLastName("");
 		setDateOfBirth("");
 		setStartDate("");
@@ -61,7 +61,7 @@ export default function Form() {
 		setCity("");
 		setState("");
 		setZipCode("");
-		setConfirmationOpen(true);
+		setConfirmationOpen(true);*/
 	};
 
 	return (

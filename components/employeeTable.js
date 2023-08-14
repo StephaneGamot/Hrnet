@@ -1,16 +1,15 @@
 import { useState, useEffect, useMemo } from "react";
 import styles from "../styles/page.module.css";
 import { useTable, usePagination, useSortBy, useFilters, useGlobalFilter } from "react-table";
-import { useSelector } from 'react-redux';
-
+import { useSelector } from "react-redux";
 
 export default function EmployeeTable() {
-	const employees = useSelector(state => state.employees);
+	const employees = useSelector((state) => state.employees);
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
-        setData(employees);
-    }, [employees]); 
+		setData(employees);
+	}, [employees]);
 
 	const columns = useMemo(
 		() => [
@@ -27,13 +26,22 @@ export default function EmployeeTable() {
 		[]
 	);
 
-	const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow, canPreviousPage, canNextPage, nextPage, previousPage, setGlobalFilter,state, setPageSize } = useTable(
-		{ columns, data, initialState: { pageIndex: 0 } },
-		useFilters,
-    useGlobalFilter, 
-		useSortBy,
-		usePagination
-	);
+	const {
+		getTableProps,
+		getTableBodyProps,
+		headerGroups,
+		page,
+		prepareRow,
+		canPreviousPage,
+		canNextPage,
+		nextPage,
+		previousPage,
+		setGlobalFilter,
+		state,
+		pageCount,
+		gotoPage,
+		setPageSize,
+	} = useTable({ columns, data, initialState: { pageIndex: 0 } }, useFilters, useGlobalFilter, useSortBy, usePagination);
 	function getSortingClass(column) {
 		if (column.isSorted) {
 			return column.isSortedDesc ? "sorting_desc" : "sorting_asc";
@@ -46,7 +54,7 @@ export default function EmployeeTable() {
 	}
 
 	return (
-		<div >
+		<div>
 			<div className={styles.employeeTableLabel}>
 				<div>
 					<label className={styles.employeeLabel}>
@@ -63,8 +71,7 @@ export default function EmployeeTable() {
 				</div>
 
 				<div className={styles.employeeSearch}>
-					Search: <input value={state.globalFilter || ""} onChange={(e) => setGlobalFilter(e.target.value || undefined)}
-    />
+					Search: <input value={state.globalFilter || ""} onChange={(e) => setGlobalFilter(e.target.value || undefined)} />
 				</div>
 			</div>
 			<table className={styles.employeeTable} {...getTableProps()}>
@@ -75,11 +82,11 @@ export default function EmployeeTable() {
 								<th
 									key={`col-${colIndex}`}
 									{...column.getHeaderProps(column.getSortByToggleProps())}
-                  className={`${getSortingClass(column)} ${styles.thStyle}`}
-									//tabIndex="0"
-									//aria-controls="employee-table"
-									//rowSpan="1"
-									//colSpan="1"
+									className={`${getSortingClass(column)} ${styles.thStyle}`}
+									tabIndex="0"
+									aria-controls="employee-table"
+									rowSpan="1"
+									colSpan="1"
 									aria-sort={column.isSorted ? (column.isSortedDesc ? "descending" : "ascending") : null}
 									aria-label={getAriaLabel(column)}
 								>
@@ -115,13 +122,11 @@ export default function EmployeeTable() {
 			</table>
 			<div className={styles.employeeTableLabel}>
 				<div className="dataTables_info" id="employee-table_info" role="status" aria-live="polite">
-					Showing { page.length === 0 
-        ? 0 
-        : state.pageIndex * state.pageSize + 1
-    }&nbsp;to {state.pageIndex * state.pageSize + page.length} of {data.length} entries
+					Showing {page.length === 0 ? 0 : state.pageIndex * state.pageSize + 1}&nbsp;to {state.pageIndex * state.pageSize + page.length} of {data.length}{" "}
+					entries
 				</div>
 
-				<div className="dataTables_paginate paging_simple_numbers" id="employee-table_paginate">
+				<div className={`${styles.paginationContainer} dataTables_paginate paging_simple_numbers`} id="employee-table_paginate" > 
 					<button
 						className={`paginate_button previous ${!canPreviousPage ? "disabled" : ""}`}
 						aria-controls="employee-table"
@@ -131,6 +136,14 @@ export default function EmployeeTable() {
 					>
 						Previous
 					</button>
+					<span> &emsp; </span>
+					<div className={`${styles.paginationNumbers} pagination`}>
+						{[...Array(pageCount)].map((_, pageIndex) => (
+							<button key={pageIndex} className={`page-item ${state.pageIndex === pageIndex ? "active" : ""}`} onClick={() => gotoPage(pageIndex)}>
+								{pageIndex + 1}
+							</button>
+						))}
+					</div>
 					<span> &emsp; </span>
 					<button
 						className={`paginate_button next ${!canNextPage ? "disabled" : ""}`}

@@ -1,6 +1,6 @@
 import { states } from '../data/states';  
 
-function StateOptions() {
+export default function StateOptions() {
     return (
         <>
             {states.map((state, index) => (
@@ -12,4 +12,4 @@ function StateOptions() {
     );
 }
 
-export default StateOptions;
+
